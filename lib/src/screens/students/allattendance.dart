@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:virtual_edu/Widgets/allattendance.dart';
-import '';
 
 class OverallAttendance extends StatefulWidget {
   @override
@@ -10,77 +9,77 @@ class OverallAttendance extends StatefulWidget {
 class _OverallAttendanceState extends State<OverallAttendance> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: ListView(
-        children: [
-          OverallAttendanceCard(
-            date: "15.12.2020",
-            day: "sunday",
-            firsthalf: true,
-            secondhalf: false,
-          ),
-          OverallAttendanceCard(
-            date: "15.12.2020",
-            day: "sunday",
-            firsthalf: true,
-            secondhalf: false,
-          ),
-          OverallAttendanceCard(
-            date: "15.12.2020",
-            day: "sunday",
-            firsthalf: true,
-            secondhalf: false,
-          ),
-          OverallAttendanceCard(
-            date: "15.12.2020",
-            day: "sunday",
-            firsthalf: true,
-            secondhalf: false,
-          ),
-          OverallAttendanceCard(
-            date: "15.12.2020",
-            day: "sunday",
-            firsthalf: true,
-            secondhalf: false,
-          ),
-          OverallAttendanceCard(
-            date: "15.12.2020",
-            day: "sunday",
-            firsthalf: true,
-            secondhalf: false,
-          ),
-          OverallAttendanceCard(
-            date: "15.12.2020",
-            day: "sunday",
-            firsthalf: true,
-            secondhalf: false,
-          ),
-          OverallAttendanceCard(
-            date: "15.12.2020",
-            day: "sunday",
-            firsthalf: true,
-            secondhalf: false,
-          ),
-          OverallAttendanceCard(
-            date: "15.12.2020",
-            day: "sunday",
-            firsthalf: true,
-            secondhalf: false,
-          ),
-          OverallAttendanceCard(
-            date: "15.12.2020",
-            day: "sunday",
-            firsthalf: true,
-            secondhalf: false,
-          ),
-          OverallAttendanceCard(
-            date: "15.12.2020",
-            day: "sunday",
-            firsthalf: true,
-            secondhalf: false,
-          ),
-        ],
-      ),
-    );
+    return Scaffold(body: Center(child: CircularProgressIndicator())
+        // ListView(
+        //   children: [
+        //     OverallAttendanceCard(
+        //       date: "15.12.2020",
+        //       day: "sunday",
+        //       firsthalf: true,
+        //       secondhalf: false,
+        //     ),
+        //     OverallAttendanceCard(
+        //       date: "15.12.2020",
+        //       day: "sunday",
+        //       firsthalf: true,
+        //       secondhalf: false,
+        //     ),
+        //     OverallAttendanceCard(
+        //       date: "15.12.2020",
+        //       day: "sunday",
+        //       firsthalf: true,
+        //       secondhalf: false,
+        //     ),
+        //     OverallAttendanceCard(
+        //       date: "15.12.2020",
+        //       day: "sunday",
+        //       firsthalf: true,
+        //       secondhalf: false,
+        //     ),
+        //     OverallAttendanceCard(
+        //       date: "15.12.2020",
+        //       day: "sunday",
+        //       firsthalf: true,
+        //       secondhalf: false,
+        //     ),
+        //     OverallAttendanceCard(
+        //       date: "15.12.2020",
+        //       day: "sunday",
+        //       firsthalf: true,
+        //       secondhalf: false,
+        //     ),
+        //     OverallAttendanceCard(
+        //       date: "15.12.2020",
+        //       day: "sunday",
+        //       firsthalf: true,
+        //       secondhalf: false,
+        //     ),
+        //     OverallAttendanceCard(
+        //       date: "15.12.2020",
+        //       day: "sunday",
+        //       firsthalf: true,
+        //       secondhalf: false,
+        //     ),
+        //     OverallAttendanceCard(
+        //       date: "15.12.2020",
+        //       day: "sunday",
+        //       firsthalf: true,
+        //       secondhalf: false,
+        //     ),
+        //     OverallAttendanceCard(
+        //       date: "15.12.2020",
+        //       day: "sunday",
+        //       firsthalf: true,
+        //       secondhalf: false,
+        //     ),
+        //     OverallAttendanceCard(
+        //       date: "15.12.2020",
+        //       day: "sunday",
+        //       firsthalf: true,
+        //       secondhalf: false,
+        //     ),
+        //   ],
+        // ),
+        );
   }
 }

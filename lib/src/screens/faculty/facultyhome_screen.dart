@@ -129,17 +129,6 @@ class _FacultyHomeScreenState extends State<FacultyHomeScreen>
                                     Transform(
                                       transform: Matrix4.translationValues(
                                           animation.value * width, 0, 0),
-                                      child: Container(
-                                        child: Icon(
-                                          Icons.checklist_outlined,
-                                          color: Colors.redAccent,
-                                          size: 36,
-                                        ),
-                                      ),
-                                    ),
-                                    Transform(
-                                      transform: Matrix4.translationValues(
-                                          animation.value * width, 0, 0),
                                       child: Padding(
                                         padding:
                                             const EdgeInsets.only(left: 8.0),

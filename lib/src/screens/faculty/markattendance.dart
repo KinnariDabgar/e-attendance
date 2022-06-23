@@ -3,6 +3,7 @@
 import 'package:bouncing_widget/bouncing_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:virtual_edu/Widgets/button.dart';
 import 'package:virtual_edu/src/screens/faculty/AttendanceModel.dart';
 import 'package:virtual_edu/src/screens/faculty/fhomedrawer.dart';
 import 'package:virtual_edu/src/screens/roledropdown.dart';
@@ -77,7 +78,7 @@ class _MarkAttendanceState extends State<MarkAttendance>
 
     atd = attendance;
     print(atd.length);
-    print(atd);
+    print(widget.subject + " " + widget.stream + " " + widget.lecDate);
     animationController =
         AnimationController(duration: Duration(seconds: 3), vsync: this);
     animation = Tween(begin: -1.0, end: 0.0).animate(CurvedAnimation(
@@ -160,17 +161,6 @@ class _MarkAttendanceState extends State<MarkAttendance>
                                   Transform(
                                     transform: Matrix4.translationValues(
                                         animation.value * width, 0, 0),
-                                    child: Container(
-                                      child: Icon(
-                                        Icons.school_rounded,
-                                        color: Colors.redAccent,
-                                        size: 36,
-                                      ),
-                                    ),
-                                  ),
-                                  Transform(
-                                    transform: Matrix4.translationValues(
-                                        animation.value * width, 0, 0),
                                     child: Padding(
                                       padding: const EdgeInsets.only(left: 8.0),
                                       child: Text(
@@ -214,48 +204,39 @@ class _MarkAttendanceState extends State<MarkAttendance>
                             topLeft: Radius.circular(38),
                           ),
                         ),
-                        child: atd.isEmpty
-                            ? CircularProgressIndicator()
-                            : ListView.builder(
-                                itemCount: atd.length,
-                                itemBuilder: (BuildContext context, int index) {
-                                  // return item
-                                  return AttendanceItem(
-                                    atd[index].name,
-                                    atd[index].roleNumber,
-                                    atd[index].lecDate,
-                                    atd[index].year,
-                                    atd[index].stream,
-                                    atd[index].subject,
-                                    atd[index].div,
-                                    atd[index].isSelected,
-                                    index,
-                                  );
-                                }),
+                        child: ListView.builder(
+                            itemCount: atd.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              // return item
+                              return AttendanceItem(
+                                atd[index].name,
+                                atd[index].roleNumber,
+                                atd[index].lecDate,
+                                atd[index].year,
+                                atd[index].stream,
+                                atd[index].subject,
+                                atd[index].div,
+                                atd[index].isSelected,
+                                index,
+                              );
+                            }),
                       ),
                     ),
                     selectedStudents.length > 0
-                        ? Padding(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 25,
-                              vertical: 10,
-                            ),
-                            child: SizedBox(
-                              width: double.infinity,
-                              child: RaisedButton(
-                                color: AppColor.primary,
-                                child: Text(
-                                  "Submit (${selectedStudents.length})",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 18,
-                                  ),
-                                ),
-                                onPressed: () {
-                                  print(
-                                      "Submit List Lenght: ${selectedStudents.length}");
-                                },
+                        ? Container(
+                            color: Colors.white,
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 40,
+                                vertical: 20,
                               ),
+                              child: SizedBox(
+                                  width: double.infinity,
+                                  child: ButtonPage(
+                                      height: 10,
+                                      icon: Icons.done,
+                                      name:
+                                          "Submit (${selectedStudents.length})")),
                             ),
                           )
                         : Container()
@@ -279,7 +260,8 @@ class _MarkAttendanceState extends State<MarkAttendance>
       int index) {
     return ListTile(
       leading: CircleAvatar(
-        backgroundColor: Colors.green[700],
+        // backgroundColor: Colors.green[700],
+        backgroundColor: AppColor.primaryLight,
         child: Icon(
           Icons.person_outline_outlined,
           color: Colors.white,
@@ -295,7 +277,7 @@ class _MarkAttendanceState extends State<MarkAttendance>
       trailing: isSelected
           ? Icon(
               Icons.check_circle,
-              color: Colors.green[700],
+              color: AppColor.primaryLight,
             )
           : Icon(
               Icons.check_circle_outline,

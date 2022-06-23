@@ -98,17 +98,6 @@ class _ViewAttendanceState extends State<ViewAttendance>
                                   Transform(
                                     transform: Matrix4.translationValues(
                                         animation.value * width, 0, 0),
-                                    child: Container(
-                                      child: Icon(
-                                        Icons.checklist_outlined,
-                                        color: Colors.redAccent,
-                                        size: 36,
-                                      ),
-                                    ),
-                                  ),
-                                  Transform(
-                                    transform: Matrix4.translationValues(
-                                        animation.value * width, 0, 0),
                                     child: Padding(
                                       padding: const EdgeInsets.only(left: 8.0),
                                       child: Text(
@@ -173,13 +162,13 @@ class _ViewAttendanceState extends State<ViewAttendance>
                               SizedBox(
                                 height: height * 0.03,
                               ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: CalenderPage(),
-                              ),
-                              SizedBox(
-                                height: height * 0.03,
-                              ),
+                              // Padding(
+                              //   padding: const EdgeInsets.all(8.0),
+                              //   child: CalenderPage(),
+                              // ),
+                              // SizedBox(
+                              //   height: height * 0.03,
+                              // ),
                               DefaultTabController(
                                 length: 2, // length of tabs
                                 initialIndex: 0,

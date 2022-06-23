@@ -9,18 +9,19 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:virtual_edu/Widgets/bouncingpagerout.dart';
 import 'package:virtual_edu/src/screens/faculty/facultyhome_screen.dart';
 import 'package:virtual_edu/src/screens/registration.dart';
-import 'package:virtual_edu/src/screens/signup.dart';
 import 'package:virtual_edu/src/screens/students/Studenthome_screen.dart';
 import 'package:virtual_edu/src/styles/app_colors.dart';
 import 'package:virtual_edu/src/styles/app_textstyle.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class LoginScreen extends StatefulWidget {
+List images = ['g.png', 't.png', 'f.png'];
+
+class SignupScreen extends StatefulWidget {
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _SignupScreenState createState() => _SignupScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen>
+class _SignupScreenState extends State<SignupScreen>
     with SingleTickerProviderStateMixin {
   bool _autoValidate = false;
   bool passshow = false;
@@ -31,6 +32,7 @@ class _LoginScreenState extends State<LoginScreen>
   var user1;
   var role;
   bool _issecure = false;
+
   GlobalKey<FormState> _formkey = GlobalKey<FormState>();
 
   @override
@@ -118,7 +120,7 @@ class _LoginScreenState extends State<LoginScreen>
                                       fontWeight: FontWeight.w600),
                                 ),
                                 Text(
-                                  "Sign in to Continue",
+                                  "Sign Up to Continue",
                                   style: AppTextStyle.style(
                                       fontsize: 18,
                                       fontWeight: FontWeight.w300),
@@ -261,26 +263,7 @@ class _LoginScreenState extends State<LoginScreen>
                                   ],
                                 ),
                               ),
-                              SizedBox(height: 32),
-                              Transform(
-                                transform: Matrix4.translationValues(
-                                    animation.value * width, 0, 0),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    GestureDetector(
-                                      onTap: () {},
-                                      child: Text(
-                                        'Forgot Password?',
-                                        style: AppTextStyle.style(
-                                          color: Colors.black.withOpacity(0.8),
-                                        ),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                              SizedBox(height: 20),
+                              SizedBox(height: 30),
                               Transform(
                                 transform: Matrix4.translationValues(
                                     animation.value * width, 0, 0),
@@ -343,7 +326,7 @@ class _LoginScreenState extends State<LoginScreen>
                                               padding: const EdgeInsets.only(
                                                   left: 32),
                                               child: Text(
-                                                'SIGN IN',
+                                                'SIGN UP',
                                                 style: AppTextStyle.style(
                                                     fontsize: 20,
                                                     fontWeight:
@@ -364,70 +347,30 @@ class _LoginScreenState extends State<LoginScreen>
                                 ),
                               ),
                               SizedBox(
-                                height: 20,
+                                height: 40,
                               ),
-                              Transform(
-                                transform: Matrix4.translationValues(
-                                    animation.value * width, 0, 0),
-                                child: BouncingWidget(
-                                  onPressed: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (BuildContext context) =>
-                                              SignupScreen(),
-                                        ));
-                                  },
-                                  child: Container(
-                                    height: 56,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(12),
-                                      gradient: LinearGradient(
-                                        begin: Alignment.topLeft,
-                                        end: Alignment.bottomRight,
-                                        colors: [
-                                          AppColor.primary,
-                                          AppColor.primary.withOpacity(0.7)
-                                        ],
+                              Text(
+                                "Sign up using following method",
+                                style: TextStyle(
+                                    color: Colors.grey[500], fontSize: 20),
+                              ),
+                              SizedBox(height: 10),
+                              Wrap(
+                                children: List<Widget>.generate(3, (index) {
+                                  return Padding(
+                                    padding: const EdgeInsets.all(10),
+                                    child: CircleAvatar(
+                                      radius: 28,
+                                      backgroundColor: Colors.grey[500],
+                                      child: CircleAvatar(
+                                        radius: 25,
+                                        backgroundImage:
+                                            AssetImage("img/" + images[index]),
                                       ),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.black12,
-                                          offset: Offset(5, 5),
-                                          blurRadius: 10,
-                                        )
-                                      ],
                                     ),
-                                    child: Row(
-                                      children: [
-                                        Expanded(
-                                          child: Center(
-                                            child: Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 32),
-                                              child: Text(
-                                                'Registration',
-                                                style: AppTextStyle.style(
-                                                    fontsize: 20,
-                                                    fontWeight:
-                                                        FontWeight.w600),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(right: 20),
-                                          child: Icon(
-                                              Icons.app_registration_outlined,
-                                              color: Colors.white,
-                                              size: 32),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
+                                  );
+                                }),
+                              )
                             ],
                           ),
                         ),
