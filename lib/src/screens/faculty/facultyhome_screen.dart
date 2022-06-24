@@ -1,9 +1,12 @@
 import 'package:bouncing_widget/bouncing_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:virtual_edu/Widgets/homecard.dart';
+import 'package:virtual_edu/src/screens/faculty/atdreport.dart';
+import 'package:virtual_edu/src/screens/faculty/downloads.dart';
 import 'package:virtual_edu/src/screens/faculty/facultyDetail.dart';
 import 'package:virtual_edu/src/screens/faculty/fhomedrawer.dart';
 import 'package:virtual_edu/src/screens/faculty/fsubjects.dart';
+import 'package:virtual_edu/src/screens/faculty/ftimetable.dart';
 import 'package:virtual_edu/src/screens/roledropdown.dart';
 import 'package:virtual_edu/src/styles/app_colors.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -198,7 +201,19 @@ class _FacultyHomeScreenState extends State<FacultyHomeScreen>
                                               0),
                                           child: BouncingWidget(
                                             scaleFactor: _scaleFactor,
-                                            onPressed: () {},
+                                            onPressed: () {
+                                              Future.delayed(
+                                                  Duration(milliseconds: 500),
+                                                  () {
+                                                Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                      builder: (BuildContext
+                                                              context) =>
+                                                          FTimetablePage(),
+                                                    ));
+                                              });
+                                            },
                                             child: DashboardCard(
                                               name: "TimeTable",
                                               imgpath: "calendar.png",
@@ -250,7 +265,19 @@ class _FacultyHomeScreenState extends State<FacultyHomeScreen>
                                               0),
                                           child: BouncingWidget(
                                             scaleFactor: _scaleFactor,
-                                            onPressed: () {},
+                                            onPressed: () {
+                                              Future.delayed(
+                                                  Duration(milliseconds: 500),
+                                                  () {
+                                                Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                      builder: (BuildContext
+                                                              context) =>
+                                                          AttendanceReport(),
+                                                    ));
+                                              });
+                                            },
                                             child: DashboardCard(
                                               name: "Attendance Report",
                                               imgpath: "exam.png",
@@ -264,7 +291,19 @@ class _FacultyHomeScreenState extends State<FacultyHomeScreen>
                                               0),
                                           child: BouncingWidget(
                                             scaleFactor: _scaleFactor,
-                                            onPressed: () {},
+                                            onPressed: () {
+                                              Future.delayed(
+                                                  Duration(milliseconds: 500),
+                                                  () {
+                                                Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                      builder: (BuildContext
+                                                              context) =>
+                                                          DownloadReport(),
+                                                    ));
+                                              });
+                                            },
                                             child: DashboardCard(
                                               name: "Download",
                                               imgpath: "downloads.png",

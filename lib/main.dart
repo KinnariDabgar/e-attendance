@@ -4,6 +4,9 @@ import 'package:virtual_edu/src/screens/splashscreen.dart';
 void main() {
   // SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
   //     overlays: [SystemUiOverlay.bottom]);
+  // SystemChrome.setSystemUIOverlayStyle(
+  //     SystemUiOverlayStyle(statusBarColor: Colors.transparent));
+
   runApp(MyApp());
 }
 

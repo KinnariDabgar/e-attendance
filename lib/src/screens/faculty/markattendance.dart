@@ -11,6 +11,8 @@ import 'package:virtual_edu/src/styles/app_colors.dart';
 import 'package:flutter_clean_calendar/flutter_clean_calendar.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../styles/app_textstyle.dart';
+
 class MarkAttendance extends StatefulWidget {
   final String subject;
   final String lecDate;
@@ -204,24 +206,226 @@ class _MarkAttendanceState extends State<MarkAttendance>
                             topLeft: Radius.circular(38),
                           ),
                         ),
-                        child: ListView.builder(
-                            itemCount: atd.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              // return item
-                              return AttendanceItem(
-                                atd[index].name,
-                                atd[index].roleNumber,
-                                atd[index].lecDate,
-                                atd[index].year,
-                                atd[index].stream,
-                                atd[index].subject,
-                                atd[index].div,
-                                atd[index].isSelected,
-                                index,
-                              );
-                            }),
+                        child: Container(
+                          width: width,
+                          child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                // SizedBox(
+                                //   height: height * 0.02,
+                                // ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 20, right: 20, top: 20),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      // image: DecorationImage(
+                                      //     image: ExactAssetImage('assets/images/images.jpeg'),
+                                      //     fit: BoxFit.fill),
+                                      color: Color.fromRGBO(201, 204, 141, 0.2),
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                    height: height * 0.18,
+                                    width: double.infinity,
+                                    child: Column(
+                                      children: [
+                                        SizedBox(
+                                          height: 5,
+                                        ),
+                                        Text(
+                                          "K.S. School of Business Management",
+                                          style: AppTextStyle.style(
+                                              fontsize: 20,
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.w900),
+                                        ),
+                                        SizedBox(
+                                          height: 5,
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                              left: 14.0, right: 14),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(
+                                                "Stream",
+                                                style: AppTextStyle.style(
+                                                    fontsize: 20,
+                                                    color: Color.fromARGB(
+                                                        255, 99, 140, 160),
+                                                    fontWeight:
+                                                        FontWeight.w600),
+                                              ),
+                                              Text(
+                                                "Subject",
+                                                style: AppTextStyle.style(
+                                                    fontsize: 20,
+                                                    color: Color.fromARGB(
+                                                        255, 99, 140, 160),
+                                                    fontWeight:
+                                                        FontWeight.w600),
+                                              ),
+                                              Text(
+                                                "Year",
+                                                style: AppTextStyle.style(
+                                                    fontsize: 20,
+                                                    color: Color.fromARGB(
+                                                        255, 99, 140, 160),
+                                                    fontWeight:
+                                                        FontWeight.w600),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                              left: 14.0, right: 14),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(
+                                                "${widget.stream}",
+                                                style: AppTextStyle.style(
+                                                    fontsize: 18,
+                                                    color: Colors.black,
+                                                    fontWeight:
+                                                        FontWeight.w400),
+                                              ),
+                                              Text(
+                                                "${widget.subject}",
+                                                style: AppTextStyle.style(
+                                                    fontsize: 18,
+                                                    color: Colors.black,
+                                                    fontWeight:
+                                                        FontWeight.w400),
+                                              ),
+                                              Text(
+                                                "${widget.year}",
+                                                style: AppTextStyle.style(
+                                                    fontsize: 18,
+                                                    color: Colors.black,
+                                                    fontWeight:
+                                                        FontWeight.w400),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                              left: 14.0, right: 14),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(
+                                                "Date",
+                                                style: AppTextStyle.style(
+                                                    fontsize: 20,
+                                                    color: Color.fromARGB(
+                                                        255, 99, 140, 160),
+                                                    fontWeight:
+                                                        FontWeight.w600),
+                                              ),
+                                              Text(
+                                                "Div",
+                                                style: AppTextStyle.style(
+                                                    fontsize: 20,
+                                                    color: Color.fromARGB(
+                                                        255, 99, 140, 160),
+                                                    fontWeight:
+                                                        FontWeight.w600),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                              left: 14.0, right: 14),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(
+                                                "${widget.lecDate}",
+                                                style: AppTextStyle.style(
+                                                    fontsize: 18,
+                                                    color: Colors.black,
+                                                    fontWeight:
+                                                        FontWeight.w400),
+                                              ),
+                                              Text(
+                                                "${widget.div}",
+                                                style: AppTextStyle.style(
+                                                    fontsize: 18,
+                                                    color: Colors.black,
+                                                    fontWeight:
+                                                        FontWeight.w400),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Expanded(
+                                  child: ListView.builder(
+                                      itemCount: atd.length,
+                                      itemBuilder:
+                                          (BuildContext context, int index) {
+                                        // return item
+                                        return AttendanceItem(
+                                          atd[index].name,
+                                          atd[index].roleNumber,
+                                          atd[index].lecDate,
+                                          atd[index].year,
+                                          atd[index].stream,
+                                          atd[index].subject,
+                                          atd[index].div,
+                                          atd[index].isSelected,
+                                          index,
+                                        );
+                                      }),
+                                ),
+                              ]),
+                        ),
                       ),
                     ),
+                    // Expanded(
+                    //   child: Container(
+                    //     width: MediaQuery.of(context).size.width,
+                    //     decoration: BoxDecoration(
+                    //       color: Colors.white,
+                    //       borderRadius: BorderRadius.only(
+                    //         topRight: Radius.circular(38),
+                    //         topLeft: Radius.circular(38),
+                    //       ),
+                    //     ),
+                    //     child: ListView.builder(
+                    //         itemCount: atd.length,
+                    //         itemBuilder: (BuildContext context, int index) {
+                    //           // return item
+                    //           return AttendanceItem(
+                    //             atd[index].name,
+                    //             atd[index].roleNumber,
+                    //             atd[index].lecDate,
+                    //             atd[index].year,
+                    //             atd[index].stream,
+                    //             atd[index].subject,
+                    //             atd[index].div,
+                    //             atd[index].isSelected,
+                    //             index,
+                    //           );
+                    //         }),
+                    //   ),
+                    // ),
                     selectedStudents.length > 0
                         ? Container(
                             color: Colors.white,

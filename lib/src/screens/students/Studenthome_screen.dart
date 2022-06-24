@@ -127,17 +127,17 @@ class _StudentHomeScreenState extends State<StudentHomeScreen>
                                 ),
                                 Row(
                                   children: [
-                                    Transform(
-                                      transform: Matrix4.translationValues(
-                                          animation.value * width, 0, 0),
-                                      child: Container(
-                                        child: Icon(
-                                          Icons.checklist_outlined,
-                                          color: Colors.redAccent,
-                                          size: 36,
-                                        ),
-                                      ),
-                                    ),
+                                    // Transform(
+                                    //   transform: Matrix4.translationValues(
+                                    //       animation.value * width, 0, 0),
+                                    //   child: Container(
+                                    //     child: Icon(
+                                    //       Icons.checklist_outlined,
+                                    //       color: Colors.redAccent,
+                                    //       size: 36,
+                                    //     ),
+                                    //   ),
+                                    // ),
                                     Transform(
                                       transform: Matrix4.translationValues(
                                           animation.value * width, 0, 0),

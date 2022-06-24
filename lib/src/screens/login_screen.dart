@@ -343,7 +343,7 @@ class _LoginScreenState extends State<LoginScreen>
                                               padding: const EdgeInsets.only(
                                                   left: 32),
                                               child: Text(
-                                                'SIGN IN',
+                                                'Sign In',
                                                 style: AppTextStyle.style(
                                                     fontsize: 20,
                                                     fontWeight:
@@ -406,7 +406,7 @@ class _LoginScreenState extends State<LoginScreen>
                                               padding: const EdgeInsets.only(
                                                   left: 32),
                                               child: Text(
-                                                'Registration',
+                                                'Sign Up',
                                                 style: AppTextStyle.style(
                                                     fontsize: 20,
                                                     fontWeight:

@@ -1,32 +1,36 @@
 import 'package:bouncing_widget/bouncing_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_clean_calendar/date_utils.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:virtual_edu/Widgets/calender.dart';
-import 'package:virtual_edu/src/screens/students/shomedrawer.dart';
-import 'package:virtual_edu/src/screens/students/todayattendance.dart';
-import 'package:virtual_edu/src/screens/students/allattendance.dart';
+import 'package:virtual_edu/src/screens/faculty/FSubjectcard.dart';
+import 'package:virtual_edu/Widgets/bottomsheetpage.dart';
+import 'package:virtual_edu/Widgets/homeworkcard.dart';
+import 'package:virtual_edu/src/screens/faculty/fhomedrawer.dart';
+import 'package:virtual_edu/src/screens/faculty/fsubjectsdata.dart';
+import 'package:virtual_edu/src/screens/roledropdown.dart';
 import 'package:virtual_edu/src/styles/app_colors.dart';
-import 'package:flutter_clean_calendar/flutter_clean_calendar.dart';
+import '../../styles/app_textstyle.dart';
+import 'getfsubjects.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../roledropdown.dart';
-
-class ViewAttendance extends StatefulWidget {
-  const ViewAttendance({Key? key}) : super(key: key);
+class DownloadReport extends StatefulWidget {
+  const DownloadReport({Key? key}) : super(key: key);
 
   @override
-  _ViewAttendanceState createState() => _ViewAttendanceState();
+  _DownloadReportState createState() => _DownloadReportState();
 }
 
-class _ViewAttendanceState extends State<ViewAttendance>
+class _DownloadReportState extends State<DownloadReport>
     with SingleTickerProviderStateMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-  double _scaleFactor = 1.0;
+  late VoidCallback _showPersistantBottomSheetCallBack;
+
   var animation, delayedAnimation, muchDelayedAnimation, LeftCurve;
   var animationController;
-  DateTime? selectedDay;
-  List<CleanCalendarEvent>? selectedEvent;
-
+  double _scaleFactor = 1.0;
+  // List hw = GetHw().getHomeworkdata();
+  List fsub = GetFsub().getSubjectdata();
   @override
   void initState() {
     // TODO: implement initState
@@ -71,14 +75,13 @@ class _ViewAttendanceState extends State<ViewAttendance>
     final double width = MediaQuery.of(context).size.width;
     final double height = MediaQuery.of(context).size.height;
     animationController.forward();
-
     return AnimatedBuilder(
         animation: animationController,
         builder: (BuildContext context, _) {
           return SafeArea(
             child: Scaffold(
               key: _scaffoldKey,
-              drawer: SHomeDrawer(),
+              drawer: FHomeDrawer(),
               body: Container(
                 decoration: BoxDecoration(
                     gradient: LinearGradient(
@@ -148,88 +151,53 @@ class _ViewAttendanceState extends State<ViewAttendance>
                       ],
                     ),
                     Expanded(
-                        child: Container(
-                      width: MediaQuery.of(context).size.width,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(38),
-                          topLeft: Radius.circular(38),
-                        ),
-                      ),
-                      child: SingleChildScrollView(
-                        child: Container(
-                          width: MediaQuery.of(context).size.width,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              SizedBox(
-                                height: height * 0.02,
-                              ),
-                              Center(
-                                child: Text(
-                                  "Attendance",
-                                  style: GoogleFonts.lato(
-                                      fontStyle: FontStyle.italic,
-                                      color: Colors.black,
-                                      fontSize: 28),
-                                ),
-                              ),
-                              SizedBox(
-                                height: height * 0.03,
-                              ),
-                              // Padding(
-                              //   padding: const EdgeInsets.all(8.0),
-                              //   child: CalenderPage(),
-                              // ),
-                              // SizedBox(
-                              //   height: height * 0.03,
-                              // ),
-                              DefaultTabController(
-                                length: 2, // length of tabs
-                                initialIndex: 0,
-                                child: Column(
-                                  crossAxisAlignment:
-                                      CrossAxisAlignment.stretch,
-                                  children: <Widget>[
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                        horizontal: 10,
-                                      ),
-                                      child: Container(
-                                        child: TabBar(
-                                          labelColor: Colors.black,
-                                          unselectedLabelColor: Colors.black26,
-                                          indicatorColor: Colors.black,
-                                          tabs: [
-                                            Tab(text: 'Today'),
-                                            Tab(text: 'Overall'),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                    Container(
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.68, //height of TabBarView
-                                      padding: EdgeInsets.symmetric(
-                                        horizontal: 10,
-                                      ),
-                                      child: TabBarView(
-                                        children: <Widget>[
-                                          TodayAttendance(),
-                                          OverallAttendance(),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
+                      child: Container(
+                        width: MediaQuery.of(context).size.width,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(38),
+                            topLeft: Radius.circular(38),
                           ),
                         ),
+                        child: Container(
+                          width: width,
+                          child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                SizedBox(
+                                  height: height * 0.02,
+                                ),
+                                Center(
+                                  child: Text(
+                                    "Downloads",
+                                    style: GoogleFonts.lato(
+                                        fontStyle: FontStyle.italic,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 28),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 30,
+                                ),
+                                Center(child: CircularProgressIndicator()),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Center(
+                                  child: Text(
+                                    "No Downloads Yet",
+                                    style: AppTextStyle.style(
+                                        fontsize: 30,
+                                        color: Colors.blueGrey,
+                                        fontWeight: FontWeight.w600),
+                                  ),
+                                ),
+                              ]),
+                        ),
                       ),
-                    ))
+                    )
                   ],
                 ),
               ),

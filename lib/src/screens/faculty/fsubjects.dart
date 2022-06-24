@@ -97,19 +97,22 @@ class _FsubjectspageState extends State<Fsubjectspage>
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
+                              Transform(
+                                transform: Matrix4.translationValues(
+                                    animation.value * width, 0, 0),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(16.0),
+                                  child: BouncingWidget(
+                                      scaleFactor: _scaleFactor,
+                                      child: Icon(Icons.menu_outlined,
+                                          size: 30, color: Colors.white),
+                                      onPressed: () {
+                                        _scaffoldKey.currentState!.openDrawer();
+                                      }),
+                                ),
+                              ),
                               Row(
                                 children: [
-                                  Transform(
-                                    transform: Matrix4.translationValues(
-                                        animation.value * width, 0, 0),
-                                    child: Container(
-                                      child: Icon(
-                                        Icons.checklist_outlined,
-                                        color: Colors.redAccent,
-                                        size: 36,
-                                      ),
-                                    ),
-                                  ),
                                   Transform(
                                     transform: Matrix4.translationValues(
                                         animation.value * width, 0, 0),

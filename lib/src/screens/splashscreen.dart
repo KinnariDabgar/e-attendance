@@ -43,13 +43,13 @@ class _SplashScreenState extends State<SplashScreen>
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(
-                    child: Icon(
-                      Icons.school_rounded,
-                      color: Colors.redAccent,
-                      size: 50,
-                    ),
-                  ),
+                  // Container(
+                  //   child: Icon(
+                  //     Icons.school_rounded,
+                  //     color: Colors.redAccent,
+                  //     size: 50,
+                  //   ),
+                  // ),
                   Padding(
                     padding: const EdgeInsets.only(left: 8.0),
                     child: Text(
