@@ -188,7 +188,7 @@ class _LoginScreenState extends State<LoginScreen>
                                                 borderSide: BorderSide(
                                                     color: Colors.black
                                                         .withOpacity(0.8))),
-                                            hintText: "kinnaridabgar@gmail.com",
+                                            hintText: "Enter E-mail id:",
                                             labelText: "E-mail-Id",
                                             labelStyle: AppTextStyle.style(
                                                 color: Colors.black
