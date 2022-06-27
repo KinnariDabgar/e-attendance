@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:virtual_edu/Widgets/attendancecard.dart';
+import 'package:virtual_edu/src/screens/students/attendancecard.dart';
 
 class TodayAttendance extends StatefulWidget {
   @override

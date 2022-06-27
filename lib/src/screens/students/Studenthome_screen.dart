@@ -2,6 +2,7 @@ import 'package:bouncing_widget/bouncing_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:virtual_edu/Widgets/homecard.dart';
 import 'package:virtual_edu/src/screens/students/shomedrawer.dart';
+import 'package:virtual_edu/src/screens/students/stimetable.dart';
 import 'package:virtual_edu/src/screens/students/studentDetail.dart';
 import 'package:virtual_edu/src/screens/students/viewattendance.dart';
 import 'package:virtual_edu/src/styles/app_colors.dart';
@@ -208,7 +209,19 @@ class _StudentHomeScreenState extends State<StudentHomeScreen>
                                             0),
                                         child: BouncingWidget(
                                           scaleFactor: _scaleFactor,
-                                          onPressed: () {},
+                                          onPressed: () {
+                                            Future.delayed(
+                                                Duration(milliseconds: 500),
+                                                () {
+                                              Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                    builder: (BuildContext
+                                                            context) =>
+                                                        STimetablePage(),
+                                                  ));
+                                            });
+                                          },
                                           child: DashboardCard(
                                             name: "TimeTable",
                                             imgpath: "calendar.png",

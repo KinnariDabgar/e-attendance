@@ -1,7 +1,10 @@
 import 'package:bouncing_widget/bouncing_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:virtual_edu/src/screens/faculty/facultyhome_screen.dart';
 import 'package:virtual_edu/src/screens/faculty/fdrawertile.dart';
 import 'package:virtual_edu/src/styles/app_colors.dart';
+import 'package:virtual_edu/src/screens/roledropdown.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class FHomeDrawer extends StatefulWidget {
   const FHomeDrawer({Key? key}) : super(key: key);
@@ -12,6 +15,18 @@ class FHomeDrawer extends StatefulWidget {
 
 class _FHomeDrawerState extends State<FHomeDrawer> {
   double _scaleFactor = 1.0;
+  removeValues() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    //Remove String
+    prefs.remove("role");
+    setState(() {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (BuildContext context) => RoleDropdown(),
+          ));
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +68,14 @@ class _FHomeDrawerState extends State<FHomeDrawer> {
                       imgpath: "home.png",
                       name: "Home",
                     ),
-                    onPressed: () {}),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (BuildContext context) =>
+                                FacultyHomeScreen(),
+                          ));
+                    }),
               ),
               Padding(
                 padding: const EdgeInsets.all(4.0),
@@ -69,9 +91,12 @@ class _FHomeDrawerState extends State<FHomeDrawer> {
                 padding: const EdgeInsets.all(4.0),
                 child: BouncingWidget(
                     scaleFactor: _scaleFactor,
-                    child: FDrawerTile(
-                      imgpath: "exit.png",
-                      name: "Log Out",
+                    child: GestureDetector(
+                      onTap: removeValues,
+                      child: FDrawerTile(
+                        imgpath: "exit.png",
+                        name: "Log Out",
+                      ),
                     ),
                     onPressed: () {}),
               ),

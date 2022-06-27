@@ -90,6 +90,10 @@ flutter:
                 weight: 400
               - asset: assets/fonts/SourceSansPro-SemiBold.ttf
                 weight: 600
+              - asset: assets/fonts/Lato-Regular.ttf
+                weight: 400
+              - asset: assets/fonts/Pacifico-Regular.ttf
+                weight: 400
   
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

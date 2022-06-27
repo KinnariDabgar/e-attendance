@@ -1,7 +1,11 @@
 import 'package:bouncing_widget/bouncing_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:virtual_edu/src/screens/students/Studenthome_screen.dart';
 import 'package:virtual_edu/src/styles/app_colors.dart';
 import 'sdrawertile.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../roledropdown.dart';
 
 class SHomeDrawer extends StatefulWidget {
   const SHomeDrawer({Key? key}) : super(key: key);
@@ -12,6 +16,18 @@ class SHomeDrawer extends StatefulWidget {
 
 class _SHomeDrawerState extends State<SHomeDrawer> {
   double _scaleFactor = 1.0;
+  removeValues() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    //Remove String
+    prefs.remove("role");
+    setState(() {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (BuildContext context) => RoleDropdown(),
+          ));
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +69,14 @@ class _SHomeDrawerState extends State<SHomeDrawer> {
                       imgpath: "home.png",
                       name: "Home",
                     ),
-                    onPressed: () {}),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (BuildContext context) =>
+                                StudentHomeScreen(),
+                          ));
+                    }),
               ),
               Padding(
                 padding: const EdgeInsets.all(4.0),
@@ -69,9 +92,12 @@ class _SHomeDrawerState extends State<SHomeDrawer> {
                 padding: const EdgeInsets.all(4.0),
                 child: BouncingWidget(
                     scaleFactor: _scaleFactor,
-                    child: SDrawerTile(
-                      imgpath: "exit.png",
-                      name: "Log Out",
+                    child: GestureDetector(
+                      onTap: removeValues,
+                      child: SDrawerTile(
+                        imgpath: "exit.png",
+                        name: "Log Out",
+                      ),
                     ),
                     onPressed: () {}),
               ),

@@ -4,19 +4,20 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:virtual_edu/src/screens/faculty/getFtimetabledata.dart';
+import 'package:virtual_edu/src/screens/students/getStimetable.dart';
+import 'package:virtual_edu/src/screens/students/shomedrawer.dart';
 
 import '../../styles/app_colors.dart';
 import '../../styles/app_textstyle.dart';
 import '../roledropdown.dart';
-import 'dateWidget.dart' as date_util;
-import 'fhomedrawer.dart';
+import 'sdateWidget.dart' as date_util;
 
-class FTimetablePage extends StatefulWidget {
+class STimetablePage extends StatefulWidget {
   @override
-  _FTimetablePageState createState() => _FTimetablePageState();
+  _STimetablePageState createState() => _STimetablePageState();
 }
 
-class _FTimetablePageState extends State<FTimetablePage>
+class _STimetablePageState extends State<STimetablePage>
     with SingleTickerProviderStateMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   late VoidCallback _showPersistantBottomSheetCallBack;
@@ -30,7 +31,7 @@ class _FTimetablePageState extends State<FTimetablePage>
   late ScrollController scrollController;
   List<DateTime> currentMonthList = List.empty();
   DateTime currentDateTime = DateTime.now();
-  List fTbl = GetFtimetable().getTimetabledata();
+  List sTbl = GetStimetable().getSTimetabledata();
 
   TextEditingController controller = TextEditingController();
   @override
@@ -50,7 +51,7 @@ class _FTimetablePageState extends State<FTimetablePage>
     muchDelayedAnimation = Tween(begin: -1.0, end: 0.0).animate(CurvedAnimation(
         parent: animationController,
         curve: Interval(0.3, 0.5, curve: Curves.fastOutSlowIn)));
-    currentMonthList = date_util.DateUtils.daysInMonth(currentDateTime);
+    currentMonthList = date_util.SDateUtils.daysInMonth(currentDateTime);
     currentMonthList.sort((a, b) => a.day.compareTo(b.day));
     currentMonthList = currentMonthList.toSet().toList();
     scrollController =
@@ -88,7 +89,7 @@ class _FTimetablePageState extends State<FTimetablePage>
           return SafeArea(
             child: Scaffold(
               key: _scaffoldKey,
-              drawer: FHomeDrawer(),
+              drawer: SHomeDrawer(),
               body: Container(
                 decoration: BoxDecoration(
                     gradient: LinearGradient(
@@ -191,7 +192,7 @@ class _FTimetablePageState extends State<FTimetablePage>
                                     child: Text(
                                       currentDateTime.day.toString() +
                                           ", " +
-                                          date_util.DateUtils.months[
+                                          date_util.SDateUtils.months[
                                               currentDateTime.month - 1] +
                                           ' ' +
                                           currentDateTime.year.toString(),
@@ -222,17 +223,17 @@ class _FTimetablePageState extends State<FTimetablePage>
                             ),
                             Expanded(
                               child: ListView.builder(
-                                  itemCount: fTbl.length,
+                                  itemCount: sTbl.length,
                                   itemBuilder: (BuildContext ctx, int index) {
                                     return cardWidget(
-                                        subject: fTbl[index].subject,
-                                        lecDate: fTbl[index].lecDate,
-                                        facultyName: fTbl[index].facultyName,
-                                        lecSTime: fTbl[index].lecSTime,
-                                        lecETime: fTbl[index].lecETime,
-                                        Stream: fTbl[index].stream,
-                                        Div: fTbl[index].div,
-                                        Year: fTbl[index].year);
+                                        subject: sTbl[index].subject,
+                                        lecDate: sTbl[index].lecDate,
+                                        facultyName: sTbl[index].facultyName,
+                                        lecSTime: sTbl[index].lecSTime,
+                                        lecETime: sTbl[index].lecETime,
+                                        Stream: sTbl[index].stream,
+                                        Div: sTbl[index].div,
+                                        Year: sTbl[index].year);
                                   }),
                             ),
                           ],
@@ -300,7 +301,7 @@ class _FTimetablePageState extends State<FTimetablePage>
                                 : Colors.white),
                   ),
                   Text(
-                    date_util.DateUtils
+                    date_util.SDateUtils
                         .weekdays[currentMonthList[index].weekday - 1],
                     style: TextStyle(
                         fontSize: 20,

@@ -5,7 +5,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 // import 'package:fzregex/utils/fzregex.dart';
 // import 'package:fzregex/utils/pattern.dart';
-import 'package:virtual_edu/Widgets/textfield.dart';
 import 'package:virtual_edu/src/styles/app_colors.dart';
 import 'package:virtual_edu/src/styles/app_textstyle.dart';
 
